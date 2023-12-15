@@ -7,7 +7,7 @@ import streamlit as st
 import time
 import pickle
 
-with open("hungarian.data", encoding='Latin1') as file:
+with open("data/hungarian.data", encoding='Latin1') as file:
   lines = [line.strip() for line in file]
 
 data = itertools.takewhile(
@@ -86,7 +86,7 @@ y = df_clean['target']
 smote = SMOTE(random_state=42)
 X, y = smote.fit_resample(X, y)
 
-model = pickle.load(open("xgb_model.pkl", 'rb'))
+model = pickle.load(open("model/xgb_model.pkl", 'rb'))
 
 y_pred = model.predict(X)
 accuracy = accuracy_score(y, y_pred)
